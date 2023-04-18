@@ -1,4 +1,6 @@
-﻿namespace HackerRank.Algorithms
+﻿// https://www.hackerrank.com/challenges/migratory-birds/problem
+
+namespace HackerRank.Algorithms
 {
     public static class MigratoryBird
     {

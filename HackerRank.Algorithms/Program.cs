@@ -4,7 +4,9 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Console.WriteLine(DayOfProgrammer.DayOfProgrammer_v1(1800));
+
+            Console.ReadLine();
         }
     }
 }
