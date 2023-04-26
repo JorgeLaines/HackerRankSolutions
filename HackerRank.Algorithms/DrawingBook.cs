@@ -1,11 +1,5 @@
 ﻿// https://www.hackerrank.com/challenges/drawing-book/problem
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace HackerRank.Algorithms
 {
     public static class DrawingBook
