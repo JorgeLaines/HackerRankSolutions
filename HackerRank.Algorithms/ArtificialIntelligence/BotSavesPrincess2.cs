@@ -34,6 +34,11 @@ namespace HackerRank.Algorithms.ArtificialIntelligence
             }
         }
 
+        public void SetDefaultExample()
+        {
+
+        }
+
         internal enum direction 
         {
             LEFT,

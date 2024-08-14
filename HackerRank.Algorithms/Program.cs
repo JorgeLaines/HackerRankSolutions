@@ -6,8 +6,8 @@ namespace HackerRank.Algorithms
     {
         static void Main(string[] args)
         {
-            var solution = new BotSavesPrincess();
-            solution.Read();
+            var solution = new BotClean();
+            solution.SetDefaultExample();
             solution.Execute();
             Console.ReadLine();
         }

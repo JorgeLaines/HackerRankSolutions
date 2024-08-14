@@ -10,5 +10,10 @@
 
         public int row { get; set; }
         public int col { get; set; }
+
+        public bool Equals(Coordinates target)
+        { 
+            return this.row == target.row && this.col == target.col;
+        }
     }
 }
