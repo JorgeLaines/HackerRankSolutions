@@ -3,9 +3,9 @@ using System.Text;
 
 namespace HackerRank.Algorithms.ArtificialIntelligence
 {
-    public class BotClean : BaseSolution, IBaseSolution
+    public class BotCleanOneStep : BaseSolution, IBaseSolution
     {
-        public BotClean() : base("https://www.hackerrank.com/challenges/botclean")
+        public BotCleanOneStep() : base("https://www.hackerrank.com/challenges/botclean")
         {
                 
         }
@@ -78,11 +78,17 @@ namespace HackerRank.Algorithms.ArtificialIntelligence
         private void next_move(int row, int col, String[] board) 
         {
             var botCoordinates = new Coordinates(row, col);
-            var target = GetClosestDirtyBlockFrom(botCoordinates, board);
-            while(target != null) {
-                WalkFromTo(botCoordinates, target, board);
-                botCoordinates = target;
-                target = GetClosestDirtyBlockFrom(botCoordinates, board);
+            if (IsBlockDirty(botCoordinates, board))
+            {
+                Clean(botCoordinates, board);
+            }
+            else
+            {
+                var target = GetClosestDirtyBlockFrom(botCoordinates, board);
+                if (target != null)
+                {
+                    NextStepFromTo(botCoordinates, target, board);
+                }
             }
         }
 
