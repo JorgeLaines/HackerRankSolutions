@@ -73,12 +73,29 @@ namespace HackerRank.Algorithms.ArtificialIntelligence
             {
                 if (IsBlockDirty(currentCoordinates, board))
                 {
-                    Console.WriteLine(Actions.CLEAN.ToString());
-                    PrintOutBoard(board);
+                    Clean(currentCoordinates, board);   
                 }
                 currentCoordinates = NextStepFromTo(currentCoordinates, target, board);
                 PrintOutBoard(board);
             }
+            if (IsBlockDirty(currentCoordinates, board))
+            {
+                Clean(currentCoordinates, board);
+            }
+        }
+
+        private void Clean(Coordinates currentCoordinates, String[] board)
+        {
+            Console.WriteLine(Actions.CLEAN.ToString());
+            board[currentCoordinates.row] = ReplaceIndexWithChar(board[currentCoordinates.row], currentCoordinates.col, '-');
+            PrintOutBoard(board);
+        }
+
+        private string ReplaceIndexWithChar(string s, int index, char c)
+        {
+            var newString = new StringBuilder(s);
+            newString[index] = c;
+            return newString.ToString();
         }
 
         private Coordinates NextStepFromTo(Coordinates origin, Coordinates target, String[] board)
@@ -144,19 +161,21 @@ namespace HackerRank.Algorithms.ArtificialIntelligence
         /// <returns></returns>
         private Coordinates GetClosestDirtyBlockFrom(Coordinates origin, String[] board)
         {
-            for (int range = 1; range < boardSize; range++)
+            var maxRange = GetLongestDistanceToBorder(origin);
+            for (int range = 1; range < maxRange; range++)
             {
-                int adjustedRange = 1 + range * 2;
-                for (int row = 0; row < adjustedRange; row++)
+                for (int row = -range; row <= range; row++)
                 {
-                    for (int col = 0; col < adjustedRange; col++)
+                    for (int col = -range; col <= range; col++)
                     {
-                        Console.WriteLine($"range: {range}, row: {row}, col: {col}");
-                        if(((row == 0 || row == adjustedRange) || 
-                            (col == 0 || col == adjustedRange)) &&
-                           IsBlockDirty(new Coordinates(row, col), board))
+                        if(((row == -range || row == range) || 
+                            (col == -range || col == range)))
                         {
-                            return new Coordinates(row, col);
+                            // Console.WriteLine($"range: {range}, row: {origin.row + row}, col: {origin.col + col}");
+                            if (IsBlockDirty(new Coordinates(origin.row + row, origin.col + col), board))
+                            {
+                                return new Coordinates(origin.row + row, origin.col + col);
+                            }
                         }
                     }
                 }
@@ -164,9 +183,18 @@ namespace HackerRank.Algorithms.ArtificialIntelligence
             return null;
         }
 
+        private int GetLongestDistanceToBorder(Coordinates origin)
+        {
+            int longestCol = origin.col; 
+            int longestRow = origin.row;
+            longestCol = boardSize - longestCol > longestCol ? boardSize - longestCol : longestCol;
+            longestRow = boardSize - longestRow > longestRow ? boardSize - longestRow : longestRow;
+            return longestCol > longestRow ? longestCol : longestRow;
+        }
+
         private bool IsBlockDirty(Coordinates origin, String[] board)
         {
-            if ((origin.row >= 0 && origin.row < boardSize) ||
+            if ((origin.row >= 0 && origin.row < boardSize) &&
                 (origin.col >= 0 && origin.col < boardSize))
             {
                 return board[origin.row][origin.col] == 'd';
