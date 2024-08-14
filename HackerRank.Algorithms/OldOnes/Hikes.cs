@@ -1,8 +1,8 @@
 ﻿// https://www.hackerrank.com/challenges/counting-valleys/problem
 
-namespace HackerRank.Algorithms
+namespace HackerRank.Algorithms.OldOnes
 {
-    public static  class Hikes
+    public static class Hikes
     {
         public static int CountingValleys(int steps, string path)
         {
@@ -13,12 +13,12 @@ namespace HackerRank.Algorithms
             for (int step = 0; step < steps; step++)
             {
                 masl += path[step] == 'U' ? 1 : -1;
-                if(valley && masl == 0) 
-                { 
+                if (valley && masl == 0)
+                {
                     // If we were in a valley and we reach sea level, we have exited the valley
-                    valleys++; 
+                    valleys++;
                     valley = false;
-                } 
+                }
                 else if (masl < 0)
                 {
                     // If we under sea level, we have entered a valley

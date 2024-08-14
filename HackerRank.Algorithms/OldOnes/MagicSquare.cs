@@ -1,16 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using static System.Math;
 
-namespace HackerRank.Algorithms
+namespace HackerRank.Algorithms.OldOnes
 {
     public static class MagicSquare
     {
         public static int formingMagicSquare(List<List<int>> s)
         {
             var sums = SumingUp(s);
+            var estimateTargetSum = (int)Round(sums.Average(), 0);
+            var deviations = sums.Select(s => s - estimateTargetSum).ToArray();
+            // If we want to achieve the least changes we need to start on the biggest differences
+            // If we resolve those first the minor differences might be resolved once we go
+
+
             return 0;
         }
 

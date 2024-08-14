@@ -1,6 +1,6 @@
 ﻿// https://www.hackerrank.com/challenges/drawing-book/problem
 
-namespace HackerRank.Algorithms
+namespace HackerRank.Algorithms.OldOnes
 {
     public static class DrawingBook
     {

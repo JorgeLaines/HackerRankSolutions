@@ -2,7 +2,7 @@
 
 // Related solution: https://www.hackerrank.com/challenges/migratory-birds/problem
 
-namespace HackerRank.Algorithms
+namespace HackerRank.Algorithms.OldOnes
 {
     public static class SalesByMatch
     {

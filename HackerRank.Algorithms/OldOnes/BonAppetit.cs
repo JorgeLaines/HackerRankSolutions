@@ -1,4 +1,4 @@
-﻿namespace HackerRank.Algorithms
+﻿namespace HackerRank.Algorithms.OldOnes
 {
     public class BonAppetit
     {
@@ -11,7 +11,7 @@
         /// <seealso cref="https://www.hackerrank.com/challenges/bon-appetit/problem"/>
         public static void BonAppetit_v1(List<int> bill, int k, int b)
         {
-            var refund = b - ((bill.Sum() - bill[k]) / 2);
+            var refund = b - (bill.Sum() - bill[k]) / 2;
 
             Console.WriteLine(refund == 0 ? "Bon Appetit" : refund.ToString());
         }
